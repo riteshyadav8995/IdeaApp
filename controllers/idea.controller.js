@@ -79,9 +79,28 @@ const updateIdea=(req,res)=>{
   //return the updated idea
 }
 
+/**
+ * controller for deleting the idea from ideaApp
+ */
+const deleteIdea=(req,res)=>{
+    let id=req.params.id;
+    if(ideas[id]){
+          delete ideas[id];
+          res.status(202).send({
+            message:`Idea ${id} deleted`
+          })
+    }
+    else{
+        res.status(404).send({
+            message:"idea od wanted to delete is doesn't exist"
+        })
+    }
+}
+
 export default{
     getAllIdeas,
     getIdeaBasedOnId,
     CreateIdea,
     updateIdea,
+    deleteIdea,
 }
