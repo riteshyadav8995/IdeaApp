@@ -12,4 +12,5 @@ export default (app)=>{
 
     //post 27.0.0.1:8000/ideaApp/api/v1/ideas
     app.post("/ideaApp/api/v1/ideas",idea_controller.CreateIdea);
+    app.put("/ideaApp/api/v1/ideas/:id",idea_controller.updateIdea);
 }

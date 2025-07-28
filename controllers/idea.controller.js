@@ -56,9 +56,32 @@ const CreateIdea=(req,res)=>{
   res.status(201).send( idea_object);// status code 201 for created something
 }
 
+/** 
+ * controller for updating the idea
+ * 
+ */
+const updateIdea=(req,res)=>{
+  // read the idea id
+  let id=req.params.id;
+  //check if the idea id is present or not
+  if(ideas[id]){
+    let idea_obj=req.body;
+    ideas[id]=idea_obj;
+    res.status(200).send(idea_obj);
+  }
+  else{
+    res.status(404).send({
+        message:"idea id wanted to update doesn't exist"
+    })
+  }
+  //read the new idea body and replace it
+
+  //return the updated idea
+}
 
 export default{
     getAllIdeas,
     getIdeaBasedOnId,
     CreateIdea,
+    updateIdea,
 }
